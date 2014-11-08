@@ -14,13 +14,14 @@ function getAllCourses($dom, $data, $array) {
         $xpath = new DOMXPath($dom);
         $items = $xpath->query('//ul[@id="blogs-list"]//div[@class="item-title"]/a');
         foreach($items as $item){
-            $courseCode = getCourseCode($dom,$item->getAttribute('href'));
-            $coursePlan = getCoursePlan($dom,$item->getAttribute('href'));
-            $courseEntryText = getCourseEntryText($dom,$item->getAttribute('href'));
-            $urlArray[] = "CourseName: " . $item->nodeValue . "--> Link:" . $item->getAttribute('href') . "--> CourseCode: " . $courseCode . "--> CoursePlan: " . $coursePlan ." --> Course Entry Text: " . $courseEntryText . "<br/>";;
+            $courseCode = getCourseCode($dom, $item->getAttribute('href'));
+            $coursePlan = getCoursePlan($dom, $item->getAttribute('href'));
+            $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
+            $latestPost = getLatestPost($dom, $item->getAttribute('href'));
+            $urlArray[] = "CourseName: " . $item->nodeValue . "--> Link:" . $item->getAttribute('href') . "--> CourseCode: " . $courseCode . "--> CoursePlan: " . $coursePlan ." --> Course Entry Text: " . $courseEntryText . "<br/>";
         }
-        echo "<br/>";
-        var_dump($urlArray);
+        //echo "<br/>";
+        //var_dump($urlArray);
     }
     getNextPage($dom, $data, $urlArray);
 }
@@ -69,12 +70,14 @@ function getCoursePlan($dom, $courseURL){
         $xpath = new DOMXPath($dom);
         $coursePlan = $xpath->query('//ul[@class = "sub-menu"]/li/a/text()[contains(., "Kursplan")]')->item(0);
 
-        $href = $coursePlan->parentNode;
-        if($href != null){
-            return $href->getAttribute("href");
-        }
-        else{
-            return "No course plan";
+        if($coursePlan != null){
+            $href = $coursePlan->parentNode;
+            if($href != null){
+                return $href->getAttribute("href");
+            }
+            else{
+                return "No course plan";
+            }
         }
     }
 }
@@ -92,6 +95,18 @@ function getNextPage($dom, $data , $urlArray){
         if(strlen($nextPageUrl) > 0){
             getAllCourses($dom,$nextPageUrl,$urlArray);
         }
+    }
+}
+
+function getLatestPost($dom, $courseURL){
+    $courseURL = curl_get_request($courseURL);
+    libxml_use_internal_errors(true);
+    if($dom->loadHTML($courseURL)){
+        libxml_use_internal_errors(false);
+        $xpath = new DOMXPath($dom);
+        $latestPost = $xpath->query('//section/article')->item(0);
+        $latestPost->firstChild;
+        var_dump($latestPost);
     }
 }
 

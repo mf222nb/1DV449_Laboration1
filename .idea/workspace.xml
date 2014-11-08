@@ -26,7 +26,7 @@
       <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scraper/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="34" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.120567374" vertical-offset="918" max-vertical-offset="1938">
+            <state line="108" column="21" selection-start="3668" selection-end="3668" vertical-scroll-proportion="0.5425532" vertical-offset="1530" max-vertical-offset="2193">
               <folding />
             </state>
           </provider>
@@ -152,7 +152,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1234" height="736" extended-state="6" />
+    <frame x="54" y="-8" width="1234" height="736" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -195,7 +195,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Scraper/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="34" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.120567374" vertical-offset="918" max-vertical-offset="1938">
+        <state line="108" column="21" selection-start="3668" selection-end="3668" vertical-scroll-proportion="0.5425532" vertical-offset="1530" max-vertical-offset="2193">
           <folding />
         </state>
       </provider>
