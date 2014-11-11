@@ -1,4 +1,5 @@
 <?php
+include('top-cache.php');
 ini_set('max_execution_time', 300);
 $data = curl_get_request("http://coursepress.lnu.se/kurser/");
 
@@ -9,19 +10,22 @@ getAllCourses($dom ,$data, $array);
 
 function getAllCourses($dom, $data, $array) {
     $urlArray = $array;
-
+    $reg = "/kurs/";
     if($dom->loadHTML($data)){
         $xpath = new DOMXPath($dom);
         $items = $xpath->query('//ul[@id="blogs-list"]//div[@class="item-title"]/a');
         foreach($items as $item){
-            $courseCode = getCourseCode($dom, $item->getAttribute('href'));
-            $coursePlan = getCoursePlan($dom, $item->getAttribute('href'));
-            $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
-            $latestPost = getLatestPost($dom, $item->getAttribute('href'));
-            $urlArray[] = "CourseName: " . $item->nodeValue . "--> Link:" . $item->getAttribute('href') . "--> CourseCode: " . $courseCode . "--> CoursePlan: " . $coursePlan ." --> Course Entry Text: " . $courseEntryText . "<br/>";
+            $links = $item->getAttribute("href");
+            if(preg_match($reg, $links)){
+                $courseCode = getCourseCode($dom, $item->getAttribute('href'));
+                $coursePlan = getCoursePlan($dom, $item->getAttribute('href'));
+                $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
+                $latestPost = getLatestPost($dom, $item->getAttribute('href'));
+                $urlArray[] = "CourseName: " . $item->nodeValue . "--> Link:" . $item->getAttribute('href') .
+                    "--> CourseCode: " . $courseCode . "--> CoursePlan: " . $coursePlan ." --> Course Entry Text: "
+                    . $courseEntryText . " --> Latest Post: ".$latestPost."<br/>";
+            }
         }
-        //echo "<br/>";
-        //var_dump($urlArray);
     }
     getNextPage($dom, $data, $urlArray);
 }
@@ -90,7 +94,10 @@ function getNextPage($dom, $data , $urlArray){
         foreach($nextPageUrl as $href){
             $nextPageUrl =  $href->getAttribute('href') . "<br/>";
         }
-
+        if($nextPageUrl == 1){
+            var_dump($urlArray);
+            include('bottom-cache.php');
+        }
         $nextPageUrl = curl_get_request("http://coursepress.lnu.se" . $nextPageUrl);
         if(strlen($nextPageUrl) > 0){
             getAllCourses($dom,$nextPageUrl,$urlArray);
@@ -104,20 +111,28 @@ function getLatestPost($dom, $courseURL){
     if($dom->loadHTML($courseURL)){
         libxml_use_internal_errors(false);
         $xpath = new DOMXPath($dom);
-        $latestPost = $xpath->query('//section/article')->item(0);
-        $latestPost->firstChild;
-        var_dump($latestPost);
+        $latestPost = $xpath->query('//header[@class = "entry-header"]/h1[@class = "entry-title"]')->item(0);
+        $latestPostTime = $xpath->query('//header[@class = "entry-header"]/p')->item(0);
+        if($latestPost != null && $latestPostTime != null){
+            $latestPostValue = $latestPost->nodeValue;
+            $latestPostTimeValue = $latestPostTime->nodeValue;
+            return $latestPostValue . $latestPostTimeValue;
+        }
+        else{
+            return "No latest post";
+        }
     }
 }
 
 function curl_get_request($url){
+    $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 
+    curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
     $data = curl_exec($ch);
-
     curl_close($ch);
 
     return $data;
