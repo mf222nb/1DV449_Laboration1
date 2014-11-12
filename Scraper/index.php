@@ -1,8 +1,11 @@
 <?php
 include('top-cache.php');
+//Kör scriptet i 5 minuter om det skulle behövas och inte avslutas efter 30 sec
 ini_set('max_execution_time', 300);
+//Läser sidan som ska skrapas
 $data = curl_get_request("http://coursepress.lnu.se/kurser/");
 
+//DOMDocument är en representation av ett dokument innehållande XML noder som är arrangerat som ett träd.
 $dom = new DOMDocument();
 $array = array();
 
@@ -11,15 +14,22 @@ getAllCourses($dom ,$data, $array);
 function getAllCourses($dom, $data, $array) {
     $urlArray = $array;
     $reg = "/kurs/";
+    //Kontroll så att HTML sidan är korrekt och inte null.
     if($dom->loadHTML($data)){
+        //Xpath är en syntax för att kunna navigera sig igenom en DOM struktur och lokalisera en eller flera noder.
         $xpath = new DOMXPath($dom);
+        //Säger till DOM att leta efter specifika element.
         $items = $xpath->query('//ul[@id="blogs-list"]//div[@class="item-title"]/a');
         foreach($items as $item){
             $links = $item->getAttribute("href");
             if(preg_match($reg, $links)){
+                //Hämtar kurskod
                 $courseCode = getCourseCode($dom, $item->getAttribute('href'));
+                //Hämtar länk till kursplan
                 $coursePlan = getCoursePlan($dom, $item->getAttribute('href'));
+                //Hämtar introduktionstexten
                 $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
+                //Hämtar senaste inlägget med namn och rubrik
                 $latestPost = getLatestPost($dom, $item->getAttribute('href'));
                 $urlArray[] = "CourseName: " . $item->nodeValue . "--> Link:" . $item->getAttribute('href') .
                     "--> CourseCode: " . $courseCode . "--> CoursePlan: " . $coursePlan ." --> Course Entry Text: "
@@ -27,9 +37,13 @@ function getAllCourses($dom, $data, $array) {
             }
         }
     }
-    getNextPage($dom, $data, $urlArray);
+    echo "Antal kurser: ".count($urlArray)." st. <br/>";
+    echo implode($urlArray);
+    include('bottom-cache.php');
+    //getNextPage($dom, $data, $urlArray);
 }
 
+//Hämtar ut introduktionstext om det finns annars skrivs No entry text ut
 function getCourseEntryText($dom, $courseURL){
     $courseURL = curl_get_request($courseURL);
     libxml_use_internal_errors(true);
@@ -49,6 +63,7 @@ function getCourseEntryText($dom, $courseURL){
     }
 }
 
+//Hämtar ut kurskod om det finns annars skrivs No course code ut
 function getCourseCode($dom, $courseURL){
     $courseURL = curl_get_request($courseURL);
     libxml_use_internal_errors(true);
@@ -66,6 +81,7 @@ function getCourseCode($dom, $courseURL){
     }
 }
 
+//Hämtar ut länk till kursplanen annars skrivs No course plan ut
 function getCoursePlan($dom, $courseURL){
     $courseURL = curl_get_request($courseURL);
     libxml_use_internal_errors(true);
@@ -86,6 +102,7 @@ function getCoursePlan($dom, $courseURL){
     }
 }
 
+//Hämtar ut kurser på nästa sida
 function getNextPage($dom, $data , $urlArray){
     if($dom->loadHTML($data)){
 
@@ -95,6 +112,7 @@ function getNextPage($dom, $data , $urlArray){
             $nextPageUrl =  $href->getAttribute('href') . "<br/>";
         }
         if($nextPageUrl == 1){
+            echo "Antal kurser: ".count($urlArray)." st.";
             var_dump($urlArray);
             include('bottom-cache.php');
         }
@@ -105,6 +123,7 @@ function getNextPage($dom, $data , $urlArray){
     }
 }
 
+//Hämtar ut senaste inlägget om det finns annars skrivs No latest post ut
 function getLatestPost($dom, $courseURL){
     $courseURL = curl_get_request($courseURL);
     libxml_use_internal_errors(true);
@@ -124,6 +143,7 @@ function getLatestPost($dom, $courseURL){
     }
 }
 
+//Tar emot en url. Initierar ett object exikverar objectet, stänger det och sedan returnerar datat.
 function curl_get_request($url){
     $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)';
     $ch = curl_init();
