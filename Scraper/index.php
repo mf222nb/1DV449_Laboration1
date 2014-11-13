@@ -31,14 +31,14 @@ function getAllCourses($dom, $data, $array) {
                 $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
                 //Hämtar senaste inlägget med namn och rubrik
                 $latestPost = getLatestPost($dom, $item->getAttribute('href'));
-                $urlArray[] = "CourseName: " . $item->nodeValue . "--> Link:" . $item->getAttribute('href') .
-                    "--> CourseCode: " . $courseCode . "--> CoursePlan: " . $coursePlan ." --> Course Entry Text: "
-                    . $courseEntryText . " --> Latest Post: ".$latestPost."<br/>";
+                $urlArray[] = array("CourseName: " => $item->nodeValue, " Link:" => $item->getAttribute('href'),
+                    "CourseCode: " => $courseCode, "CoursePlan: " => $coursePlan," Course Entry Text: "
+                    => $courseEntryText, "Latest Post: " => $latestPost."");
             }
         }
     }
     echo "Antal kurser: ".count($urlArray)." st. <br/>";
-    echo implode($urlArray);
+    echo json_encode($urlArray);
     include('bottom-cache.php');
     //getNextPage($dom, $data, $urlArray);
 }
@@ -145,7 +145,7 @@ function getLatestPost($dom, $courseURL){
 
 //Tar emot en url. Initierar ett object exikverar objectet, stänger det och sedan returnerar datat.
 function curl_get_request($url){
-    $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)';
+    $agent = 'mf22nb@student.lnu.se';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 
