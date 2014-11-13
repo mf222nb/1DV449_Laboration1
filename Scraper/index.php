@@ -145,7 +145,7 @@ function getLatestPost($dom, $courseURL){
 
 //Tar emot en url. Initierar ett object exikverar objectet, stänger det och sedan returnerar datat.
 function curl_get_request($url){
-    $agent = 'mf22nb@student.lnu.se';
+    $agent = 'mf222nb@student.lnu.se';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
 
