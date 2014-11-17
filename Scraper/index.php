@@ -31,13 +31,12 @@ function getAllCourses($dom, $data, $array) {
                 $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
                 //Hämtar senaste inlägget med namn och rubrik
                 $latestPost = getLatestPost($dom, $item->getAttribute('href'));
-                $urlArray[] = array("CourseName:" => $item->nodeValue, " Link:" => $item->getAttribute('href'),
-                    "CourseCode:" => $courseCode, "CoursePlan:" => $coursePlan," Course Entry Text:" => $courseEntryText, "Latest Post:" => $latestPost."");
+                $urlArray[] = array("CourseName:"=>$item->nodeValue,"Link:"=>$item->getAttribute('href'),"CourseCode:"=>$courseCode,"CoursePlan:"=>$coursePlan,"Course_Entry_Text:"=>$courseEntryText,"Latest_Post:"=>$latestPost."");
             }
         }
     }
     echo "Antal kurser: ".count($urlArray)." st. <br/>";
-    echo json_encode($urlArray);
+    echo json_encode($urlArray, JSON_PRETTY_PRINT);
     include('bottom-cache.php');
     //getNextPage($dom, $data, $urlArray);
 }
