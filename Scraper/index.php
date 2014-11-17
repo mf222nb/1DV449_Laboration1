@@ -35,7 +35,7 @@ function getAllCourses($dom, $data, $array) {
             }
         }
     }
-    echo "Antal kurser: ".count($urlArray)." st. <br/>";
+    echo "Antal kurser: ".count($urlArray)." st.";
     echo json_encode($urlArray, JSON_PRETTY_PRINT);
     include('bottom-cache.php');
     //getNextPage($dom, $data, $urlArray);
