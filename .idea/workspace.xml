@@ -26,7 +26,7 @@
       <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scraper/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="35" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.8492908" vertical-offset="2020" max-vertical-offset="2788">
+            <state line="34" column="155" selection-start="1816" selection-end="1816" vertical-scroll-proportion="0.27659574" vertical-offset="422" max-vertical-offset="2771">
               <folding />
             </state>
           </provider>
@@ -35,16 +35,19 @@
       <file leaf-file-name="reflektion_lab1.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scraper/reflektion_lab1.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
+            <state line="1" column="0" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="782">
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="top-cache.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scraper/top-cache.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="323">
+            <state line="3" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="323">
               <folding />
             </state>
           </provider>
@@ -53,7 +56,7 @@
       <file leaf-file-name="bottom-cache.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scraper/bottom-cache.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="154" selection-end="154" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="238">
+            <state line="3" column="0" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="238">
               <folding />
             </state>
           </provider>
@@ -209,7 +212,6 @@
     <frame x="54" y="-8" width="1234" height="736" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -222,6 +224,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -248,6 +251,68 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Scraper/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="35" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="2788">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/reflektion_lab1.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/top-cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/bottom-cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="35" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="2788">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/reflektion_lab1.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="782">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/top-cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scraper/bottom-cache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Scraper/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="20" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2448">
@@ -282,24 +347,27 @@
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scraper/top-cache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="323">
+        <state line="3" column="31" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="323">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scraper/bottom-cache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="154" selection-end="154" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="238">
+        <state line="3" column="0" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="238">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scraper/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="35" selection-start="5650" selection-end="5650" vertical-scroll-proportion="0.8492908" vertical-offset="2020" max-vertical-offset="2788">
+        <state line="34" column="155" selection-start="1816" selection-end="1816" vertical-scroll-proportion="0.27659574" vertical-offset="422" max-vertical-offset="2771">
           <folding />
         </state>
       </provider>

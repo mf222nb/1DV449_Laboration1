@@ -31,9 +31,8 @@ function getAllCourses($dom, $data, $array) {
                 $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
                 //Hämtar senaste inlägget med namn och rubrik
                 $latestPost = getLatestPost($dom, $item->getAttribute('href'));
-                $urlArray[] = array("CourseName: " => $item->nodeValue, " Link:" => $item->getAttribute('href'),
-                    "CourseCode: " => $courseCode, "CoursePlan: " => $coursePlan," Course Entry Text: "
-                    => $courseEntryText, "Latest Post: " => $latestPost."");
+                $urlArray[] = array("CourseName:" => $item->nodeValue, " Link:" => $item->getAttribute('href'),
+                    "CourseCode:" => $courseCode, "CoursePlan:" => $coursePlan," Course Entry Text:" => $courseEntryText, "Latest Post:" => $latestPost."");
             }
         }
     }
