@@ -31,13 +31,13 @@ function getAllCourses($dom, $data, $array) {
                 $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
                 //Hämtar senaste inlägget med namn och rubrik
                 $latestPost = getLatestPost($dom, $item->getAttribute('href'));
-                $urlArray[] = array("CourseName:"=>$item->nodeValue,"Link:"=>$item->getAttribute('href'),"CourseCode:"=>$courseCode,"CoursePlan:"=>$coursePlan,"Course_Entry_Text:"=>$courseEntryText,"Latest_Post:"=>$latestPost."");
+                $urlArray[] = array("CourseName:"=>$item->nodeValue,"Link:"=>$item->getAttribute('href'),"CourseCode:"=>$courseCode,"CoursePlan:"=>$coursePlan,"Course_Entry_Text:"=>$courseEntryText,"Latest_Post:"=>$latestPost);
             }
         }
     }
-    echo "Antal kurser: ".count($urlArray)." st.";
     echo json_encode($urlArray, JSON_PRETTY_PRINT);
     include('bottom-cache.php');
+    echo "Antal kurser: ".count($urlArray)." st.";
     //getNextPage($dom, $data, $urlArray);
 }
 
@@ -52,7 +52,7 @@ function getCourseEntryText($dom, $courseURL){
         $courseEntryText = $xpath->query('//div[@class="entry-content"]/p/text()')->item(0);
 
         if($courseEntryText != null){
-            return $courseEntryText->textContent;
+            return trim($courseEntryText->textContent);
         }
         else{
             return "No entry text";
@@ -71,7 +71,7 @@ function getCourseCode($dom, $courseURL){
         $courseCode = $xpath->query('//div[@id = "header-wrapper"]/ul/li[last()]/a/text()')->item(0);
 
         if($courseCode != null){
-            return $courseCode->textContent;
+            return trim($courseCode->textContent);
         }
         else{
             return "No course code";
@@ -91,7 +91,7 @@ function getCoursePlan($dom, $courseURL){
         if($coursePlan != null){
             $href = $coursePlan->parentNode;
             if($href != null){
-                return $href->getAttribute("href");
+                return trim($href->getAttribute("href"));
             }
             else{
                 return "No course plan";
@@ -131,8 +131,8 @@ function getLatestPost($dom, $courseURL){
         $latestPost = $xpath->query('//header[@class = "entry-header"]/h1[@class = "entry-title"]')->item(0);
         $latestPostTime = $xpath->query('//header[@class = "entry-header"]/p')->item(0);
         if($latestPost != null && $latestPostTime != null){
-            $latestPostValue = $latestPost->nodeValue;
-            $latestPostTimeValue = $latestPostTime->nodeValue;
+            $latestPostValue = trim($latestPost->nodeValue);
+            $latestPostTimeValue = trim($latestPostTime->nodeValue);
             return $latestPostValue . $latestPostTimeValue;
         }
         else{
