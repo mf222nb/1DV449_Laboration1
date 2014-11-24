@@ -31,7 +31,9 @@ function getAllCourses($dom, $data, $array) {
                 $courseEntryText = getCourseEntryText($dom, $item->getAttribute('href'));
                 //Hämtar senaste inlägget med namn och rubrik
                 $latestPost = getLatestPost($dom, $item->getAttribute('href'));
-                $urlArray[] = array("CourseName:"=>$item->nodeValue,"Link:"=>$item->getAttribute('href'),"CourseCode:"=>$courseCode,"CoursePlan:"=>$coursePlan,"Course_Entry_Text:"=>$courseEntryText,"Latest_Post:"=>$latestPost);
+                $date = getLatestDate($dom, $item->getAttribute('href'));
+                $name = getLatestName($dom, $item->getAttribute('href'));
+                $urlArray[] = array("CourseName:"=>$item->nodeValue,"Link:"=>$item->getAttribute('href'),"CourseCode:"=>$courseCode,"CoursePlan:"=>$coursePlan,"Course_Entry_Text:"=>$courseEntryText,"Latest_Post:"=>$latestPost, "Date:"=>$date,"Namn:"=>$name);
             }
         }
     }
@@ -129,14 +131,47 @@ function getLatestPost($dom, $courseURL){
         libxml_use_internal_errors(false);
         $xpath = new DOMXPath($dom);
         $latestPost = $xpath->query('//header[@class = "entry-header"]/h1[@class = "entry-title"]')->item(0);
-        $latestPostTime = $xpath->query('//header[@class = "entry-header"]/p')->item(0);
-        if($latestPost != null && $latestPostTime != null){
+        if($latestPost != null){
             $latestPostValue = trim($latestPost->nodeValue);
-            $latestPostTimeValue = trim($latestPostTime->nodeValue);
-            return $latestPostValue . $latestPostTimeValue;
+            return $latestPostValue;
         }
         else{
             return "No latest post";
+        }
+    }
+}
+
+function getLatestDate($dom, $courseURL){
+    $courseURL = curl_get_request($courseURL);
+    libxml_use_internal_errors(true);
+    if($dom->loadHTML($courseURL)){
+        libxml_use_internal_errors(false);
+        $xpath = new DOMXPath($dom);
+        $latestPostTime = $xpath->query('//header[@class = "entry-header"]/p[@class="entry-byline"]')->item(0);
+        if($latestPostTime !=null){
+            $latestPostTimeValue = trim($latestPostTime->nodeValue);
+            preg_match('/(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})/', $latestPostTimeValue, $match);
+            return $match[1];
+        }
+        else{
+            return "No date";
+        }
+    }
+}
+
+function getLatestName($dom, $courseURL){
+    $courseURL = curl_get_request($courseURL);
+    libxml_use_internal_errors(true);
+    if($dom->loadHTML($courseURL)){
+        libxml_use_internal_errors(false);
+        $xpath = new DOMXPath($dom);
+        $name = $xpath->query('//header[@class = "entry-header"]/p[@class="entry-byline"]/strong')->item(0);
+        if($name !=null){
+            $nameValue = trim($name->nodeValue);
+            return $nameValue;
+        }
+        else{
+            return "No name";
         }
     }
 }
