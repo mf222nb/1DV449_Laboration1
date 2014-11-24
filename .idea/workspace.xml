@@ -23,19 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scraper/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="30" selection-start="6543" selection-end="6543" vertical-scroll-proportion="0.4574468" vertical-offset="2632" max-vertical-offset="3349">
+            <state line="170" column="30" selection-start="6543" selection-end="6543" vertical-scroll-proportion="-9.923077" vertical-offset="2632" max-vertical-offset="3349">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cache.json" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="cache.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scraper/cache.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="28" selection-start="922" selection-end="927" vertical-scroll-proportion="-4.576923" vertical-offset="34" max-vertical-offset="3349">
+            <state line="9" column="28" selection-start="922" selection-end="927" vertical-scroll-proportion="0.2109929" vertical-offset="34" max-vertical-offset="3349">
               <folding />
             </state>
           </provider>
@@ -530,16 +530,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scraper/cache.json">
+    <entry file="file://$PROJECT_DIR$/Scraper/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="28" selection-start="922" selection-end="927" vertical-scroll-proportion="-4.576923" vertical-offset="34" max-vertical-offset="3349">
+        <state line="170" column="30" selection-start="6543" selection-end="6543" vertical-scroll-proportion="-9.923077" vertical-offset="2632" max-vertical-offset="3349">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scraper/index.php">
+    <entry file="file://$PROJECT_DIR$/Scraper/cache.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="30" selection-start="6543" selection-end="6543" vertical-scroll-proportion="0.4574468" vertical-offset="2632" max-vertical-offset="3349">
+        <state line="9" column="28" selection-start="922" selection-end="927" vertical-scroll-proportion="0.2109929" vertical-offset="34" max-vertical-offset="3349">
           <folding />
         </state>
       </provider>
